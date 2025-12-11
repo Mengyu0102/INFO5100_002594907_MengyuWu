@@ -1,0 +1,14 @@
+edu/example/app/Filter.class
+edu/example/app/ThumbnailGenerator.class
+edu/example/app/TintFilter.class
+edu/example/app/Controller.class
+edu/example/app/MainApp.class
+edu/example/app/ImageFile.class
+edu/example/app/MetadataUtil.class
+edu/example/app/ImageProcessingException.class
+edu/example/app/PngConverter.class
+edu/example/app/JpgConverter.class
+edu/example/app/Config.class
+edu/example/app/ImageManager.class
+edu/example/app/GrayscaleFilter.class
+edu/example/app/Converter.class

@@ -1,0 +1,35 @@
+@startuml
+title ImageManagerProject - Class Diagram
+
+class MainApp
+class Controller
+class ImageManager
+class ImageFile
+class ThumbnailGenerator
+class MetadataUtil
+class Converter <<interface>>
+class PngConverter
+class JpgConverter
+class Filter <<interface>>
+class GrayscaleFilter
+class TintFilter
+class Config <<Singleton>>
+class ImageProcessingException
+
+MainApp --> Controller
+Controller --> ImageManager
+Controller --> ThumbnailGenerator
+Controller --> MetadataUtil
+ImageManager --> ImageFile
+ImageManager --> Converter
+ImageManager --> Filter
+
+Converter <|.. PngConverter
+Converter <|.. JpgConverter
+
+Filter <|.. GrayscaleFilter
+Filter <|.. TintFilter
+
+Config .. ImageManager
+ImageProcessingException <|-- PngConverter
+@enduml

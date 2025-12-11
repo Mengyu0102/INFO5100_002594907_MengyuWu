@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<BookShelf>
+    <Book>
+        <title>The Great Algorithm</title>
+        <publishedYear>2023</publishedYear>
+        <numberOfPages>450</numberOfPages>
+        <authors>
+            <author>Alice Programmer</author>
+        </authors>
+    </Book>
+    <Book>
+        <title>Data Structures Illustrated</title>
+        <publishedYear>2018</publishedYear>
+        <numberOfPages>620</numberOfPages>
+        <authors>
+            <author>Bob Code</author>
+            <author>Charlie Design</author>
+        </authors>
+    </Book>
+    <Book>
+        <title>Cloud Native Java</title>
+        <publishedYear>2020</publishedYear>
+        <numberOfPages>750</numberOfPages>
+        <authors>
+            <author>David Ops</author>
+        </authors>
+    </Book>
+</BookShelf>
