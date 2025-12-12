@@ -120,6 +120,8 @@ public class Controller {
         }
     }
 
+    // Controller.java (onConvert)
+
     private void onConvert(String format) {
         try {
             Optional<ImageFile> opt = imageManager.getSelected();
@@ -129,39 +131,62 @@ public class Controller {
             }
             ImageFile selected = opt.get();
             Converter converter;
+
             switch(format.toLowerCase()) {
                 case "png": converter = new PngConverter(); break;
                 case "jpg": converter = new JpgConverter(); break;
                 default: converter = new PngConverter(); break;
             }
-            Path out = imageManager.convert(selected, converter, format);
-            showInfo("Converted and saved to: " + out.toString());
+
+            // 关键修改：只执行转换，结果存储在 selected 对象中
+            imageManager.convert(selected, converter);
+
+            showInfo("Conversion successful. Click 'Download Converted' to save the file.");
+
         } catch (ImageProcessingException ex) {
             showError("Conversion failed: " + ex.getMessage());
         }
     }
 
-    private void onDownload() {
-        showInfo("Converted files are saved in temp directory. Please check the path shown after conversion.");
-    }
+    // Controller.java (onDownload)
 
-    private void onApplyGrayscale() {
+    private void onDownload() {
         Optional<ImageFile> opt = imageManager.getSelected();
-        if (opt.isEmpty()) { showError("No image selected"); return;}
-        ImageFile f = opt.get();
+        if (opt.isEmpty()) {
+            showError("No image selected");
+            return;
+        }
+        ImageFile selected = opt.get();
+        Optional<javafx.scene.image.Image> convertedOpt = selected.getConvertedImage();
+
+        if (convertedOpt.isEmpty()) {
+            showError("No converted image found. Please run conversion first.");
+            return;
+        }
+
         try {
-            Filter g = new GrayscaleFilter();
-            imageManager.applyFilter(f, g);
-            // refresh thumbnail
-            tilePane.getChildren().removeIf(node -> ((ImageView)node).getUserData()==f);
-            ImageView iv = new ImageView(f.getThumbnail());
-            iv.setUserData(f);
-            iv.setFitWidth(100); iv.setFitHeight(100); iv.setPreserveRatio(true);
-            iv.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> onThumbnailClicked(iv));
-            tilePane.getChildren().add(iv);
-            showInfo("Grayscale applied");
-        } catch (ImageProcessingException e) {
-            showError("Filter failed: " + e.getMessage());
+            // Where to download
+            String userHome = System.getProperty("user.home");
+            Path outputDir = Path.of(userHome, "Desktop", "ImageManagerOutput");
+            if (java.nio.file.Files.notExists(outputDir)) {
+                java.nio.file.Files.createDirectories(outputDir);
+            }
+
+            // Get image
+            javafx.scene.image.Image convertedImage = convertedOpt.get();
+            BufferedImage bImage = SwingFXUtils.fromFXImage(convertedImage, null);
+
+            // select file
+            String baseName = selected.getFilename().substring(0, selected.getFilename().lastIndexOf('.'));
+            Path outputPath = outputDir.resolve(baseName + "_converted.png");
+
+            // write
+            ImageIO.write(bImage, "png", outputPath.toFile());
+
+            showInfo("File successfully downloaded and saved to: " + outputPath.toString());
+
+        } catch (Exception ex) {
+            showError("Download failed: " + ex.getMessage());
         }
     }
 
@@ -183,6 +208,28 @@ public class Controller {
             showError("Filter failed: " + e.getMessage());
         }
     }
+
+
+    private void onApplyGrayscale() {
+        Optional<ImageFile> opt = imageManager.getSelected();
+        if (opt.isEmpty()) { showError("No image selected"); return;}
+        ImageFile f = opt.get();
+        try {
+            Filter g = new GrayscaleFilter();
+            imageManager.applyFilter(f, g);
+            // refresh thumbnail
+            tilePane.getChildren().removeIf(node -> ((ImageView)node).getUserData()==f);
+            ImageView iv = new ImageView(f.getThumbnail());
+            iv.setUserData(f);
+            iv.setFitWidth(100); iv.setFitHeight(100); iv.setPreserveRatio(true);
+            iv.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> onThumbnailClicked(iv));
+            tilePane.getChildren().add(iv);
+            showInfo("Grayscale applied");
+        } catch (ImageProcessingException e) {
+            showError("Filter failed: " + e.getMessage());
+        }
+    }
+
 
     private void showError(String msg) {
         Alert a = new Alert(Alert.AlertType.ERROR, msg);

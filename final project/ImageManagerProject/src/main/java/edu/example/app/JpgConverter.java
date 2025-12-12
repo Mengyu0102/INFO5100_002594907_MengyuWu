@@ -4,20 +4,21 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import javafx.embed.swing.SwingFXUtils;
 
 /**
  * JpgConverter - converts input image to JPG.
  */
 public class JpgConverter implements Converter {
+
     @Override
-    public Path convert(Path inputFile, String targetFormat) throws ImageProcessingException {
+    public javafx.scene.image.Image convert(Path inputPath) throws ImageProcessingException {
         try {
-            BufferedImage img = ImageIO.read(inputFile.toFile());
-            Path out = Files.createTempFile("conv-", ".jpg");
-            ImageIO.write(img, "jpg", out.toFile());
-            return out;
+            BufferedImage img = ImageIO.read(inputPath.toFile());
+            // 核心修改：将 BufferedImage 转换为 JavaFX Image 对象并返回
+            return SwingFXUtils.toFXImage(img, null);
         } catch (Exception e) {
-            throw new ImageProcessingException("Unable to convert to JPG: " + e.getMessage(), e);
+            throw new ImageProcessingException("Unable to convert to JPG/PNG: " + e.getMessage(), e);
         }
     }
 }

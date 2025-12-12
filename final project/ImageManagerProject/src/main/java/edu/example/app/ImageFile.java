@@ -4,6 +4,7 @@ import javafx.scene.image.Image;
 
 import java.nio.file.Path;
 import java.util.Map;
+import java.util.Optional;
 
 /**
  * ImageFile - model representing an image and its properties.
@@ -34,4 +35,15 @@ public class ImageFile {
 
     public Image getThumbnail() { return thumbnail; }
     public void setThumbnail(Image thumbnail) { this.thumbnail = thumbnail; }
+
+
+    private javafx.scene.image.Image convertedImage;
+
+    public void setConvertedImage(javafx.scene.image.Image convertedImage) {
+        this.convertedImage = convertedImage;
+    }
+
+    public Optional<javafx.scene.image.Image> getConvertedImage() {
+        return Optional.ofNullable(convertedImage);
+    }
 }

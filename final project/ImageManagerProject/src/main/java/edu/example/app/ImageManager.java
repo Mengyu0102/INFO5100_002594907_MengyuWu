@@ -31,8 +31,11 @@ public class ImageManager {
         return Optional.ofNullable(selected);
     }
 
-    public Path convert(ImageFile input, Converter converter, String format) throws ImageProcessingException {
-        return converter.convert(input.getPath(), format);
+    // ImageManager.java (convert)
+
+    public void convert(ImageFile input, Converter converter) throws ImageProcessingException {
+        javafx.scene.image.Image converted = converter.convert(input.getPath());
+        input.setConvertedImage(converted);
     }
 
     public void applyFilter(ImageFile input, Filter filter) throws ImageProcessingException {

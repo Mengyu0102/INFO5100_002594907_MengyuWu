@@ -1,14 +1,14 @@
-/Users/mengyu/Desktop/ImageManagerProject/src/main/java/edu/example/app/TintFilter.java
-/Users/mengyu/Desktop/ImageManagerProject/src/main/java/edu/example/app/JpgConverter.java
-/Users/mengyu/Desktop/ImageManagerProject/src/main/java/edu/example/app/ImageProcessingException.java
-/Users/mengyu/Desktop/ImageManagerProject/src/main/java/edu/example/app/MainApp.java
-/Users/mengyu/Desktop/ImageManagerProject/src/main/java/edu/example/app/Converter.java
-/Users/mengyu/Desktop/ImageManagerProject/src/main/java/edu/example/app/Filter.java
-/Users/mengyu/Desktop/ImageManagerProject/src/main/java/edu/example/app/Controller.java
-/Users/mengyu/Desktop/ImageManagerProject/src/main/java/edu/example/app/ImageManager.java
-/Users/mengyu/Desktop/ImageManagerProject/src/main/java/edu/example/app/MetadataUtil.java
-/Users/mengyu/Desktop/ImageManagerProject/src/main/java/edu/example/app/ImageFile.java
-/Users/mengyu/Desktop/ImageManagerProject/src/main/java/edu/example/app/PngConverter.java
-/Users/mengyu/Desktop/ImageManagerProject/src/main/java/edu/example/app/GrayscaleFilter.java
-/Users/mengyu/Desktop/ImageManagerProject/src/main/java/edu/example/app/ThumbnailGenerator.java
-/Users/mengyu/Desktop/ImageManagerProject/src/main/java/edu/example/app/Config.java
+/Users/mengyu/INFO5100_002594907_MengyuWu/final project/ImageManagerProject/src/main/java/edu/example/app/Converter.java
+/Users/mengyu/INFO5100_002594907_MengyuWu/final project/ImageManagerProject/src/main/java/edu/example/app/GrayscaleFilter.java
+/Users/mengyu/INFO5100_002594907_MengyuWu/final project/ImageManagerProject/src/main/java/edu/example/app/MainApp.java
+/Users/mengyu/INFO5100_002594907_MengyuWu/final project/ImageManagerProject/src/main/java/edu/example/app/ImageProcessingException.java
+/Users/mengyu/INFO5100_002594907_MengyuWu/final project/ImageManagerProject/src/main/java/edu/example/app/MetadataUtil.java
+/Users/mengyu/INFO5100_002594907_MengyuWu/final project/ImageManagerProject/src/main/java/edu/example/app/ImageManager.java
+/Users/mengyu/INFO5100_002594907_MengyuWu/final project/ImageManagerProject/src/main/java/edu/example/app/ThumbnailGenerator.java
+/Users/mengyu/INFO5100_002594907_MengyuWu/final project/ImageManagerProject/src/main/java/edu/example/app/Config.java
+/Users/mengyu/INFO5100_002594907_MengyuWu/final project/ImageManagerProject/src/main/java/edu/example/app/Controller.java
+/Users/mengyu/INFO5100_002594907_MengyuWu/final project/ImageManagerProject/src/main/java/edu/example/app/Filter.java
+/Users/mengyu/INFO5100_002594907_MengyuWu/final project/ImageManagerProject/src/main/java/edu/example/app/ImageFile.java
+/Users/mengyu/INFO5100_002594907_MengyuWu/final project/ImageManagerProject/src/main/java/edu/example/app/TintFilter.java
+/Users/mengyu/INFO5100_002594907_MengyuWu/final project/ImageManagerProject/src/main/java/edu/example/app/PngConverter.java
+/Users/mengyu/INFO5100_002594907_MengyuWu/final project/ImageManagerProject/src/main/java/edu/example/app/JpgConverter.java
