@@ -1,0 +1,22 @@
+{
+  "BookShelf": [
+    {
+      "title": "The Great Algorithm",
+      "publishedYear": 2023,
+      "numberOfPages": 450,
+      "authors": ["Alice Programmer"]
+    },
+    {
+      "title": "Data Structures Illustrated",
+      "publishedYear": 2018,
+      "numberOfPages": 620,
+      "authors": ["Bob Code", "Charlie Design"]
+    },
+    {
+      "title": "Cloud Native Java",
+      "publishedYear": 2020,
+      "numberOfPages": 750,
+      "authors": ["David Ops"]
+    }
+  ]
+}

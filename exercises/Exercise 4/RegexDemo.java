@@ -6,6 +6,7 @@ public class RegexDemo {
     public static void main(String[] args) {
         System.out.println("=== Class Exercise # 4: Regular Expression Demonstration ===");
 
+
         // 1. Quantifiers: Match one or more letters
         demonstratePattern("Quantifier (+): Match one or more letters",
                 "^[a-zA-Z]+$",
@@ -48,7 +49,27 @@ public class RegexDemo {
         System.out.println("\n========================================================");
     }
 
-/**
- * Core demonstration method: tests the given pattern against subject strings.
- * @param description Description of the pattern.
- * @
+    /**
+     * Core demonstration method: tests the given pattern against subject strings.
+     * @param description Description of the pattern.
+     * @param regexPattern The regular expression pattern to test.
+     * @param subjectStrings A variable number of strings to test the pattern against.
+     */
+    private static void demonstratePattern(String description, String regexPattern, String... subjectStrings) {
+        System.out.println("\n--- Demonstration: " + description + " ---");
+        System.out.println("Pattern: \"" + regexPattern + "\"");
+
+        // 编译正则表达式
+        Pattern p = Pattern.compile(regexPattern);
+
+        // 遍历所有测试字符串
+        for (String subject : subjectStrings) {
+            Matcher m = p.matcher(subject);
+            boolean matches = m.matches(); // matches() 尝试匹配整个输入序列
+
+            String result = matches ? "MATCHES (Positive Case)" : "DOES NOT MATCH (Negative Case)";
+
+            System.out.printf("  String: \"%s\" -> %s\n", subject, result);
+        }
+    }
+} // 类的结尾
